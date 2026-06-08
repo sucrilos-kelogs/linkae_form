@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnóstico de Mentoria — Linkae</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@500;700&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <!-- Libs externas (PDF) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- FORMULÁRIO -->
+<div id="telaFormulario">
+<div class="site-header">
+  <svg class="deco-u" width="360" height="360" viewBox="0 0 357.94 359.44"><path fill="#ABD905" d="M68.3,10.82H9.68v243.31c0,23.09,9.43,44.09,24.62,59.28c15.19,15.19,36.18,24.63,59.28,24.63h0.01c23.1,0,44.09-9.44,59.28-24.63c15.19-15.19,24.62-36.18,24.62-59.28v-2.73v-84.02v-41.85c0-15.39,6.32-29.41,16.49-39.59c10.17-10.17,24.19-16.49,39.58-16.49c15.39,0,29.41,6.32,39.58,16.49c10.17,10.17,16.49,24.19,16.49,39.59v41.85v84.02h58.62v-84.02v-41.85c0-31.57-12.9-60.26-33.67-81.03c-20.77-20.77-49.46-33.67-81.03-33.67s-60.25,12.9-81.03,33.67c-20.77,20.77-33.67,49.46-33.67,81.03v41.85v84.02v2.73c0,6.92-2.85,13.24-7.44,17.83c-4.59,4.59-10.91,7.45-17.83,7.45h-0.01c-6.92,0-13.24-2.85-17.83-7.44c-4.59-4.59-7.44-10.91-7.44-17.84V10.82z"/></svg>
+  <div class="header-inner">
+    <svg class="logo-header" viewBox="0 0 798 269.55" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="lg1" x1="36.9" y1="55.5" x2="256.5" y2="209.2" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 -1 0 290)"><stop offset="0" stop-color="#ABD905"/><stop offset="1" stop-color="#21C4F7"/></linearGradient></defs>
+      <rect x="6.06" y="6" fill="#540094" width="36.43" height="203.6"/>
+      <polygon fill="#540094" points="352.71,209.6 352.71,157.4 375.8,180.48 404.92,209.6 438.1,209.6 455.5,209.6 421.51,175.73 405.03,159.14 401.09,155.19 380.67,134.77 388.09,127.23 421.51,93.82 455.5,59.95 438.1,59.95 404.92,59.95 375.8,89.07 352.71,112.15 352.71,6 316.28,6 316.28,209.6"/>
+      <path fill="#540094" d="M668.85,148.35c1.74,11.14,6.03,20.53,13.69,26.45c7.66,6.03,17.05,9.4,29.12,9.4c7.66,0,15.43-1.74,21.35-5.1c6.84-3.36,11.14-7.66,15.43-13.69h38.52c-6.84,16.24-16.24,29-29.12,38.4c-12.88,9.4-28.19,13.69-45.36,13.69c-11.14,0-21.35-1.74-31.67-6.03c-9.4-3.36-17.98-9.4-25.64-17.98c-6.84-6.84-12.76-16.24-17.05-25.64c-3.36-10.21-6.03-19.72-6.03-30.74c0-10.21,2.55-20.53,6.03-29.93c3.36-9.4,9.4-17.98,16.24-24.83c7.66-8.58,16.24-15.43,26.45-19.72c9.4-4.29,19.72-6.84,29.93-6.84c13.69,0,25.64,3.36,37.59,9.4c11.14,6.03,21.35,14.5,29.12,25.64c5.1,6.03,8.58,13.69,11.14,22.27c2.55,7.66,3.36,17.05,3.36,27.38v4.29v3.36H668.85z M753.42,120.16c-2.55-10.21-7.66-17.98-15.43-23.09c-6.84-5.1-16.24-7.66-27.38-7.66c-9.4,0-17.98,2.55-24.83,8.58c-7.66,6.03-12.76,12.88-15.43,22.27h83.07z"/>
+      <path fill="#540094" d="M539.61,180.02c-24.83,0-44.43-19.72-44.43-44.43c0-24.83,19.61-44.43,44.43-44.43c24.83,0,44.43,19.61,44.43,44.43C584.04,160.3,564.43,180.02,539.61,180.02 M539.14,56.12c-43.62,0-79.24,35.85-79.24,79.47s35.96,79.47,79.58,79.47c16.24,0,33.18-5.1,44.55-13.69v12.99h34.22v-76.22v-2.55C618.26,91.97,582.76,56.12,539.14,56.12"/>
+      <path fill="url(#lg1)" d="M110.59,59.95H74.16v151.4c0,14.39,5.92,27.5,15.31,36.89c9.4,9.4,22.51,15.31,36.89,15.31l0,0c14.39,0,27.38-5.92,36.89-15.31c9.4-9.4,15.31-22.51,15.31-36.89v-1.74v-52.32v-25.99c0-9.63,3.94-18.33,10.21-24.59c6.38-6.38,15.08-10.21,24.59-10.21c9.63,0,18.33,3.94,24.59,10.21c6.38,6.38,10.21,15.08,10.21,24.59v25.99v52.32h36.43v-52.32v-25.99c0-19.61-8-37.47-21-50.47c-12.88-12.88-30.74-21-50.47-21c-19.61,0-37.47,8-50.47,21c-12.88,12.88-21,30.74-21,50.47v25.99v52.32v1.74c0,4.29-1.74,8.24-4.64,11.14s-6.84,4.64-11.14,4.64l0,0c-4.29,0-8.24-1.74-11.14-4.64c-2.9-2.9-4.64-6.84-4.64-11.14V59.95H110.59z"/>
+    </svg>
+    <span class="header-tag">Metodologia CEP© · Linkae</span>
+
+    <!-- Indicador C → E → P -->
+    <div style="display:flex;align-items:flex-start;justify-content:center;gap:0;margin-bottom:36px">
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--verde),var(--azul));border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:20px;font-weight:800;color:white;box-shadow:0 4px 16px rgba(33,196,247,.3)">C</div>
+        <span style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--azul);margin-top:7px">Clareza</span>
+      </div>
+      <div style="width:44px;height:2px;background:linear-gradient(90deg,var(--azul),var(--borda));margin:24px 2px 0"></div>
+      <div style="display:flex;flex-direction:column;align-items:center;opacity:.35">
+        <div style="width:48px;height:48px;background:var(--bg-soft);border:2px solid var(--borda);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:20px;font-weight:800;color:var(--muted)">E</div>
+        <span style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:7px">Estratégia</span>
+      </div>
+      <div style="width:44px;height:2px;background:var(--borda);margin:24px 2px 0"></div>
+      <div style="display:flex;flex-direction:column;align-items:center;opacity:.35">
+        <div style="width:48px;height:48px;background:var(--bg-soft);border:2px solid var(--borda);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:20px;font-weight:800;color:var(--muted)">P</div>
+        <span style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:7px">Posicionamento</span>
+      </div>
+    </div>
+
+    <!-- MAPA icon + título -->
+    <div style="text-align:center;margin-bottom:28px">
+      <div style="width:76px;height:76px;background:linear-gradient(135deg,var(--verde),var(--azul));border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:36px;box-shadow:0 8px 28px rgba(33,196,247,.25)">🗺️</div>
+      <h1 class="header-title" style="font-size:clamp(32px,5vw,48px);margin-bottom:6px">MAPA©</h1>
+      <p style="font-size:11px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;background:linear-gradient(90deg,var(--verde),var(--azul));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0">Clareza · Ponto de Partida</p>
+    </div>
+
+    <p class="header-sub" style="margin-bottom:20px">Antes de traçar qualquer rota, é preciso saber quem você é, onde está e o que te move. O MAPA© é o ponto de partida de toda a sua jornada.</p>
+
+    <div style="background:linear-gradient(135deg,rgba(171,217,5,.09),rgba(33,196,247,.09));border:1px solid rgba(33,196,247,.25);border-radius:10px;padding:18px 22px;margin-top:4px">
+      <p style="font-size:14px;color:var(--texto);line-height:1.85;margin-bottom:10px"><strong style="color:var(--roxo)">Como vai funcionar:</strong> o MAPA© tem 10 blocos e leva cerca de <strong>10 a 15 minutos</strong>. Cada resposta constrói uma visão única do seu momento.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px">
+        <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);font-family:Montserrat,sans-serif;font-weight:600">🔒 Confidencial</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);font-family:Montserrat,sans-serif;font-weight:600">⏱ ~10 minutos</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);font-family:Montserrat,sans-serif;font-weight:600">✓ Sem respostas certas ou erradas</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<form id="formDiagnostico">
+
+  <div class="section">
+    <div class="section-title"><span class="section-num">1</span> Identificação</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:var(--texto);line-height:1.75;margin-bottom:20px;padding:12px 16px;background:var(--bg-soft);border-radius:8px;border-left:3px solid var(--azul)">Essas informações ajudam a personalizar a sua jornada e entrar em contato para dar início ao processo. Preencha com calma.</p>
+      <div class="question"><label>Nome completo</label><input type="text" id="nome" placeholder="Como prefere ser chamado(a)?"></div>
+      <div class="question"><label>E-mail <span class="hint">Para receber informações sobre a mentoria</span></label><input type="text" id="email" placeholder="seu@email.com"></div>
+      <div class="question"><label>WhatsApp <span class="hint">Com DDD</span></label><input type="text" id="whatsapp" placeholder="(11) 99999-9999"></div>
+      <div class="question"><label>Cargo atual e empresa <span class="hint">Se estiver em transição, descreva sua situação</span></label><input type="text" id="cargo" placeholder="Ex: Gerente de Projetos — Tech Corp"></div>
+      <div class="question"><label>Data de nascimento <span class="hint">Usada para contexto de fase de carreira</span></label><input type="date" id="dataNasc" placeholder="dd/mm/aaaa"></div>
+      <div class="question"><label>Há quanto tempo está nessa posição?</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="tempoCargo" value="Menos de 1 ano"><span class="option-text">Menos de 1 ano</span></label>
+          <label class="option"><input type="radio" name="tempoCargo" value="1 a 3 anos"><span class="option-text">1 a 3 anos</span></label>
+          <label class="option"><input type="radio" name="tempoCargo" value="3 a 7 anos"><span class="option-text">3 a 7 anos</span></label>
+          <label class="option"><input type="radio" name="tempoCargo" value="Mais de 7 anos"><span class="option-text">Mais de 7 anos</span></label>
+          <label class="option"><input type="radio" name="tempoCargo" value="Em transição de carreira"><span class="option-text">Estou em transição de carreira</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="section-num">2</span> Objetivo da Mentoria</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:var(--texto);line-height:1.75;margin-bottom:20px;padding:12px 16px;background:var(--bg-soft);border-radius:8px;border-left:3px solid var(--verde)">Esta é a pergunta mais importante de todo o diagnóstico. O que você escrever aqui vai guiar toda a nossa conversa. Seja específico. Quanto mais concreto, mais útil para os dois.</p>
+      <div class="question"><label>O que te trouxe até aqui e qual resultado você espera?
+        <span class="hint">O que precisa ser diferente daqui a seis meses para você sentir que valeu a pena? Pode ser um cargo, uma clareza, uma mudança de rota. Qualquer coisa que seja real para você.</span>
+        </label><textarea id="objetivo" placeholder="Ex: Quero uma promoção nos próximos 12 meses e não sei como me posicionar. / Estou perdido(a) sobre meu próximo passo e preciso de clareza."></textarea></div>
+      <div class="question"><label>Qual situação melhor descreve seu momento atual?
+        <span class="hint">Marque todas que ressoam com você agora. Elas ajudam a definir quais ferramentas entrarão na sua trilha. Quanto mais honesto, mais personalizada será a jornada.</span>
+        </label>
+        <div class="options">
+          <label class="option"><input type="checkbox" name="situacao" value="crescimento"><span class="option-text">Quero crescer dentro da empresa onde estou</span></label>
+          <label class="option"><input type="checkbox" name="situacao" value="lideranca"><span class="option-text">Preciso desenvolver ou fortalecer minha liderança</span></label>
+          <label class="option"><input type="checkbox" name="situacao" value="visibilidade"><span class="option-text">Tenho resultados, mas falta visibilidade e reconhecimento</span></label>
+          <label class="option"><input type="checkbox" name="situacao" value="performance"><span class="option-text">Quero melhorar minha performance e produtividade</span></label>
+          <label class="option"><input type="checkbox" name="situacao" value="equilibrio"><span class="option-text">Estou sobrecarregado(a) e preciso de equilíbrio</span></label>
+          <label class="option"><input type="checkbox" name="situacao" value="transicao"><span class="option-text">Quero mudar de área ou de setor</span></label>
+          <label class="option"><input type="checkbox" name="situacao" value="proposito"><span class="option-text">Estou bem profissionalmente, mas sinto falta de propósito</span></label>
+          <label class="option"><input type="checkbox" name="situacao" value="mudar_empresa"><span class="option-text">Quero mudar de empresa</span></label>
+          <label class="option"><input type="checkbox" name="situacao" value="sem_entrevistas"><span class="option-text">Estou buscando emprego mas não consigo entrevistas</span></label>
+          <label class="option"><input type="checkbox" name="situacao" value="nao_passa_entrevistas"><span class="option-text">Chego nas entrevistas mas não passo</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="section-num">3</span> Autoconhecimento</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:var(--texto);line-height:1.75;margin-bottom:20px;padding:12px 16px;background:var(--bg-soft);border-radius:8px;border-left:3px solid var(--roxo)">Autoconhecimento é a base de qualquer desenvolvimento real. Estas perguntas revelam o quanto você já se conhece, sem julgamento. Não existe resposta mais certa do que outra.</p>
+      <div class="question"><label>Como você avalia seu autoconhecimento hoje? <span class="hint">1 = baixo · 5 = muito alto</span></label>
+        <div class="scale-group" id="autoconhecimento">
+          <button type="button" class="scale-btn" data-val="1" onclick="selectScale(this,'autoconhecimento')">1</button>
+          <button type="button" class="scale-btn" data-val="2" onclick="selectScale(this,'autoconhecimento')">2</button>
+          <button type="button" class="scale-btn" data-val="3" onclick="selectScale(this,'autoconhecimento')">3</button>
+          <button type="button" class="scale-btn" data-val="4" onclick="selectScale(this,'autoconhecimento')">4</button>
+          <button type="button" class="scale-btn" data-val="5" onclick="selectScale(this,'autoconhecimento')">5</button>
+        </div>
+        <div class="scale-labels"><span>Pouco</span><span>Muito</span></div>
+      </div>
+      <div class="question"><label>Seus valores pessoais estão claros para você?
+        <span class="hint">Valores são o que orienta suas decisões mesmo quando ninguém está olhando. Por exemplo: autonomia, reconhecimento, segurança, impacto, família, crescimento.</span>
+        </label>
+        <div class="options">
+          <label class="option"><input type="radio" name="valores" value="nao"><span class="option-text">Não, nunca parei para pensar nisso com profundidade</span></label>
+          <label class="option"><input type="radio" name="valores" value="parcial"><span class="option-text">Mais ou menos, tenho uma ideia mas não é muito clara</span></label>
+          <label class="option"><input type="radio" name="valores" value="sim"><span class="option-text">Sim, sei o que é importante para mim</span></label>
+        </div>
+      </div>
+      <div class="question"><label>Você identifica crenças ou padrões que te sabotam na carreira?
+        <span class="hint">Crenças limitantes são pensamentos que aparecem quando você tenta avançar e criam bloqueios internos. Por exemplo: "Não sou bom o suficiente", "Não mereço ganhar mais", "Se eu aparecer, vão me criticar".</span>
+        </label>
+        <div class="options">
+          <label class="option"><input type="radio" name="crencas" value="nao"><span class="option-text">Não consigo identificar nada</span></label>
+          <label class="option"><input type="radio" name="crencas" value="suspeita"><span class="option-text">Suspeito que existam, mas não consigo nomear</span></label>
+          <label class="option"><input type="radio" name="crencas" value="sei"><span class="option-text">Sei quais são, mas não sei como mudar</span></label>
+          <label class="option"><input type="radio" name="crencas" value="trabalhando"><span class="option-text">Já trabalho nisso ativamente</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="section-num">4</span> Liderança e Relacionamentos</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:var(--texto);line-height:1.75;margin-bottom:20px;padding:12px 16px;background:var(--bg-soft);border-radius:8px;border-left:3px solid var(--azul)">Liderança não é só para quem tem equipe. É sobre como você influencia, comunica e é percebido, mesmo que trabalhe de forma individual. Responda pensando no seu contexto real, não no ideal.</p>
+      <div class="question"><label>Você lidera ou influencia pessoas hoje?</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="lidera" value="nao"><span class="option-text">Não, trabalho individualmente</span></label>
+          <label class="option"><input type="radio" name="lidera" value="informal"><span class="option-text">Influencio sem cargo formal de liderança</span></label>
+          <label class="option"><input type="radio" name="lidera" value="pequena"><span class="option-text">Lidero uma equipe pequena (até 5 pessoas)</span></label>
+          <label class="option"><input type="radio" name="lidera" value="media"><span class="option-text">Lidero uma equipe média (5 a 20 pessoas)</span></label>
+          <label class="option"><input type="radio" name="lidera" value="grande"><span class="option-text">Lidero uma operação maior (+20 pessoas)</span></label>
+        </div>
+      </div>
+      <div class="question"><label>Como você avalia sua capacidade de comunicar e influenciar? <span class="hint">1 = muita dificuldade · 5 = muito eficaz</span></label>
+        <div class="scale-group" id="comunicacao">
+          <button type="button" class="scale-btn" data-val="1" onclick="selectScale(this,'comunicacao')">1</button>
+          <button type="button" class="scale-btn" data-val="2" onclick="selectScale(this,'comunicacao')">2</button>
+          <button type="button" class="scale-btn" data-val="3" onclick="selectScale(this,'comunicacao')">3</button>
+          <button type="button" class="scale-btn" data-val="4" onclick="selectScale(this,'comunicacao')">4</button>
+          <button type="button" class="scale-btn" data-val="5" onclick="selectScale(this,'comunicacao')">5</button>
+        </div>
+        <div class="scale-labels"><span>Baixa</span><span>Alta</span></div>
+      </div>
+      <div class="question"><label>Você sabe como é percebido(a) pelos colegas e liderança?
+        <span class="hint">Existe uma diferença entre como você se vê e como os outros te enxergam. Essa diferença costuma ser um dos maiores freios para o crescimento. Pense em feedbacks que já recebeu ou deixou de receber.</span>
+        </label>
+        <div class="options">
+          <label class="option"><input type="radio" name="percepcao" value="nao"><span class="option-text">Não tenho ideia</span></label>
+          <label class="option"><input type="radio" name="percepcao" value="parcial"><span class="option-text">Tenho algumas pistas, mas nada estruturado</span></label>
+          <label class="option"><input type="radio" name="percepcao" value="sim"><span class="option-text">Já recebi feedbacks estruturados sobre isso</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="section-num">5</span> Performance e Execução</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:var(--texto);line-height:1.75;margin-bottom:20px;padding:12px 16px;background:var(--bg-soft);border-radius:8px;border-left:3px solid var(--verde)">Performance não é sobre trabalhar mais. É sobre transformar intenção em resultado. Estas perguntas ajudam a entender como você executa no dia a dia e onde estão os principais pontos de melhora.</p>
+      <div class="question"><label>Como você avalia seu foco e produtividade? <span class="hint">Pense nas últimas semanas. Você consegue trabalhar com foco sem se dispersar? Termina o que começa? Sente que o dia rende? 1 = muita dispersão · 5 = foco consistente</span>
+        </label>
+        <div class="scale-group" id="foco">
+          <button type="button" class="scale-btn" data-val="1" onclick="selectScale(this,'foco')">1</button>
+          <button type="button" class="scale-btn" data-val="2" onclick="selectScale(this,'foco')">2</button>
+          <button type="button" class="scale-btn" data-val="3" onclick="selectScale(this,'foco')">3</button>
+          <button type="button" class="scale-btn" data-val="4" onclick="selectScale(this,'foco')">4</button>
+          <button type="button" class="scale-btn" data-val="5" onclick="selectScale(this,'foco')">5</button>
+        </div>
+        <div class="scale-labels"><span>Baixo</span><span>Alto</span></div>
+      </div>
+      <div class="question"><label>Você costuma transformar objetivos em planos de ação concretos?
+        <span class="hint">A diferença entre quem avança e quem fica parado quase sempre está em transformar "quero isso" em "farei isso, nesta data, desta forma". Como está isso para você?</span>
+        </label>
+        <div class="options">
+          <label class="option"><input type="radio" name="planoacao" value="nao"><span class="option-text">Não, fico mais na intenção do que na execução</span></label>
+          <label class="option"><input type="radio" name="planoacao" value="parcial"><span class="option-text">Às vezes, mas sem método claro</span></label>
+          <label class="option"><input type="radio" name="planoacao" value="sim"><span class="option-text">Costumo planejar bem, mas falta consistência</span></label>
+          <label class="option"><input type="radio" name="planoacao" value="muito"><span class="option-text">Sou muito organizado(a) e disciplinado(a)</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="section-num">6</span> Propósito e Visão de Futuro</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:var(--texto);line-height:1.75;margin-bottom:20px;padding:12px 16px;background:var(--bg-soft);border-radius:8px;border-left:3px solid var(--roxo)">Estas são as perguntas mais profundas do diagnóstico. Não se preocupe se as respostas estiverem confusas ou incompletas. A falta de clareza aqui também é uma informação valiosa e é exatamente o que a mentoria pode ajudar a construir.</p>
+      <div class="question"><label>Você tem clareza sobre onde quer estar daqui a 5–10 anos?
+        <span class="hint">Não é sobre ter um plano perfeito. É sobre ter uma direção, algo que te puxa pra frente quando você acorda de manhã. Se não tiver, tudo bem. É exatamente por isso que estamos aqui.</span>
+        </label>
+        <div class="options">
+          <label class="option"><input type="radio" name="visao" value="nao"><span class="option-text">Não, não consigo enxergar isso</span></label>
+          <label class="option"><input type="radio" name="visao" value="nebulosa"><span class="option-text">Tenho uma sensação vaga, mas nada concreto</span></label>
+          <label class="option"><input type="radio" name="visao" value="parcial"><span class="option-text">Tenho uma direção, mas precisa ser mais clara</span></label>
+          <label class="option"><input type="radio" name="visao" value="clara"><span class="option-text">Tenho uma visão bastante clara</span></label>
+        </div>
+      </div>
+      <div class="question"><label>O que você faz está alinhado com seu propósito de vida?
+        <span class="hint">Propósito não precisa ser grandioso. É a sensação de que o que você faz tem sentido, que vai além do salário. Você sente isso no trabalho atual, mesmo que seja parcialmente?</span>
+        </label>
+        <div class="options">
+          <label class="option"><input type="radio" name="proposito" value="nao"><span class="option-text">Não, sinto um desalinhamento claro</span></label>
+          <label class="option"><input type="radio" name="proposito" value="incerto"><span class="option-text">Não sei ao certo qual é meu propósito</span></label>
+          <label class="option"><input type="radio" name="proposito" value="parcial"><span class="option-text">Parcialmente, algumas coisas fazem sentido</span></label>
+          <label class="option"><input type="radio" name="proposito" value="sim"><span class="option-text">Sim, sinto alinhamento</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section">
+    <div class="section-title"><span class="section-num">7</span> Estruturas de Sustentação Profissional©</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:var(--texto);line-height:1.75;margin-bottom:20px;padding:12px 16px;background:var(--bg-soft);border-radius:8px;border-left:3px solid var(--roxo)">Chegamos em uma das partes mais profundas deste diagnóstico. Aqui não existem respostas melhores ou piores, apenas o que é genuinamente verdadeiro para você.<br><br>Cada pessoa carrega necessidades profissionais que influenciam sua motivação, seu senso de pertencimento e sua permanência na carreira. Em cada situação abaixo, escolha a opção que ressoa mais com quem você é, não com quem acha que deveria ser.</p>
+
+      <div class="question"><label>1. Se você tivesse que escolher entre dois trabalhos com salário igual, qual despertaria mais conexão em você?</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="sust1" value="competencia"><span class="option-text">Um ambiente onde você se tornaria referência técnica e especialista reconhecido na sua área.</span></label>
+          <label class="option"><input type="radio" name="sust1" value="autonomia"><span class="option-text">Um ambiente onde teria liberdade para decidir como, quando e da forma que acredita ser melhor.</span></label>
+        </div>
+      </div>
+
+      <div class="question"><label>2. O que tornaria uma promoção verdadeiramente significativa para você?</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="sust2" value="gestao"><span class="option-text">Assumir responsabilidade estratégica, influência e liderança sobre pessoas e decisões.</span></label>
+          <label class="option"><input type="radio" name="sust2" value="estilovida"><span class="option-text">Ter mais espaço para integrar o trabalho com a vida que quero fora dele, sem abrir mão de nenhum dos dois.</span></label>
+        </div>
+      </div>
+
+      <div class="question"><label>3. Quando pensa em realização profissional, o que mais gera conexão emocional?</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="sust3" value="empreendedorismo"><span class="option-text">Construir algo genuinamente seu: um projeto, ideia, negócio ou criação com a sua identidade.</span></label>
+          <label class="option"><input type="radio" name="sust3" value="servico"><span class="option-text">Sentir que seu trabalho gera transformação real em pessoas, equipes ou causas que importam.</span></label>
+        </div>
+      </div>
+
+      <div class="question"><label>4. Se tivesse que recomeçar profissionalmente hoje, o que seria inegociável?</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="sust4" value="seguranca"><span class="option-text">Ter estabilidade, previsibilidade e segurança emocional no ambiente de trabalho.</span></label>
+          <label class="option"><input type="radio" name="sust4" value="desafio"><span class="option-text">Me sentir constantemente desafiado, estimulado e provocado a evoluir.</span></label>
+        </div>
+      </div>
+
+      <div class="question"><label>5. O que você jamais abriria mão numa carreira que faz sentido de verdade?
+        <span class="hint">Escreva com liberdade. Não precisa ser elaborado.</span>
+        </label><textarea id="sustInegociavel" placeholder="O que é inegociável para você profissionalmente..."></textarea></div>
+
+      <div class="question"><label>6. O que faria você recusar uma oportunidade que parece excelente no papel?</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="sust6" value="competencia"><span class="option-text">Perceber que precisaria abrir mão da minha especialidade, profundidade ou domínio técnico.</span></label>
+          <label class="option"><input type="radio" name="sust6" value="estilovida"><span class="option-text">Saber que isso comprometeria meu equilíbrio de vida, minha saúde ou meu tempo pessoal.</span></label>
+        </div>
+      </div>
+
+      <div class="question"><label>7. Em qual ambiente você sente que sua energia profissional mais cresce?</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="sust7" value="desafio"><span class="option-text">Ambientes que me desafiam com problemas complexos, competição e superação constante.</span></label>
+          <label class="option"><input type="radio" name="sust7" value="empreendedorismo"><span class="option-text">Ambientes onde existe espaço para criar, inovar e construir novas possibilidades do zero.</span></label>
+        </div>
+      </div>
+
+      <div class="question"><label>8. O que mais faz você se dedicar profundamente a um trabalho?</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="sust8" value="autonomia"><span class="option-text">A liberdade e autonomia para conduzir o trabalho com autenticidade e do meu jeito.</span></label>
+          <label class="option"><input type="radio" name="sust8" value="servico"><span class="option-text">A percepção de que o que faço gera impacto real em pessoas, equipes ou ambientes.</span></label>
+        </div>
+      </div>
+
+      <div class="question"><label>9. O que mais desgasta você profissionalmente, mesmo quando tudo parece estar bem por fora?
+        <span class="hint">Pode ser um ambiente, uma dinâmica, uma sensação. Escreva sem filtro.</span>
+        </label><textarea id="sustDesgaste" placeholder="O que mais me desgasta profissionalmente é..."></textarea></div>
+
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title"><span class="section-num">8</span> LinkedIn e Currículo</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:var(--texto);line-height:1.75;margin-bottom:20px;padding:12px 16px;background:var(--bg-soft);border-radius:8px;border-left:3px solid var(--azul)">Sua presença digital é o que o mercado vê antes de te conhecer. Mesmo que você não esteja buscando emprego agora, isso impacta oportunidades, visibilidade e reconhecimento. Seja honesto sobre onde está.</p>
+      <div class="question"><label>Situação do seu perfil no LinkedIn</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="linkedin" value="nao"><span class="option-text">Não tenho perfil</span></label>
+          <label class="option"><input type="radio" name="linkedin" value="basico"><span class="option-text">Tenho, mas está desatualizado ou incompleto</span></label>
+          <label class="option"><input type="radio" name="linkedin" value="ok"><span class="option-text">Tenho e está razoável</span></label>
+          <label class="option"><input type="radio" name="linkedin" value="ativo"><span class="option-text">Tenho, está completo e sou ativo(a)</span></label>
+        </div>
+      </div>
+      <div class="question"><label>URL do seu LinkedIn <span class="hint">Opcional</span></label><input type="text" id="linkedinUrl" placeholder="https://linkedin.com/in/seu-perfil"></div>
+      <div class="question"><label>Situação do seu currículo</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="cv" value="nao"><span class="option-text">Desatualizado ou inexistente</span></label>
+          <label class="option"><input type="radio" name="cv" value="parcial"><span class="option-text">Parcialmente atualizado</span></label>
+          <label class="option"><input type="radio" name="cv" value="sim"><span class="option-text">Atualizado e pronto</span></label>
+        </div>
+      </div>
+      <div class="question"><label>Anexe seu currículo <span class="hint">Opcional · PDF ou Word</span></label>
+        <div class="upload-zone" onclick="document.getElementById('cvFile').click()">
+          <input type="file" id="cvFile" accept=".pdf,.doc,.docx" onchange="handleFile(this,'cvName')">
+          <div class="upload-icon">📄</div>
+          <div class="upload-text"><strong>Clique para anexar</strong> ou arraste aqui<br>PDF, DOC ou DOCX · máx. 10MB</div>
+          <div id="cvName"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="section-num">9</span> Perfil Comportamental — DISC</div>
+    <div class="section-body">
+      <div style="background:var(--bg-soft);border-radius:8px;padding:16px 18px;margin-bottom:20px;border-left:3px solid var(--verde)">
+        <p style="font-size:13px;color:var(--texto);line-height:1.8;margin-bottom:8px"><strong style="color:var(--roxo)">O que é o DISC?</strong> É um modelo que identifica seu estilo comportamental predominante: como você age, decide, se comunica e lida com pressão no trabalho.</p>
+        <p style="font-size:13px;color:var(--texto);line-height:1.75;margin-bottom:0">Para cada situação, escolha a opção que <strong style="color:var(--texto)">mais representa</strong> você de verdade, não como gostaria de ser ou como acha que deveria responder. Seja espontâneo.</p>
+      </div>
+      <div class="question"><label>1. Quando preciso tomar uma decisão importante, costumo...</label><div class="options"><label class="option"><input type="radio" name="disc1" value="D"><span class="option-text">Decidir rapidamente e assumir os riscos</span></label><label class="option"><input type="radio" name="disc1" value="I"><span class="option-text">Conversar com várias pessoas antes de decidir</span></label><label class="option"><input type="radio" name="disc1" value="S"><span class="option-text">Refletir com calma e buscar consenso</span></label><label class="option"><input type="radio" name="disc1" value="C"><span class="option-text">Analisar todos os dados disponíveis antes de agir</span></label></div></div>
+      <div class="question"><label>2. No trabalho em equipe, meu papel natural é...</label><div class="options"><label class="option"><input type="radio" name="disc2" value="D"><span class="option-text">Liderar, definir o rumo e cobrar resultados</span></label><label class="option"><input type="radio" name="disc2" value="I"><span class="option-text">Motivar o grupo e manter o clima positivo</span></label><label class="option"><input type="radio" name="disc2" value="S"><span class="option-text">Apoiar, estabilizar e garantir que todos se entendam</span></label><label class="option"><input type="radio" name="disc2" value="C"><span class="option-text">Garantir que o trabalho seja feito com qualidade e precisão</span></label></div></div>
+      <div class="question"><label>3. Quando recebo uma crítica, minha reação inicial é...</label><div class="options"><label class="option"><input type="radio" name="disc3" value="D"><span class="option-text">Questionar ou defender meu ponto de vista</span></label><label class="option"><input type="radio" name="disc3" value="I"><span class="option-text">Ficar um pouco abalado(a) emocionalmente</span></label><label class="option"><input type="radio" name="disc3" value="S"><span class="option-text">Ouvir com atenção e tentar entender</span></label><label class="option"><input type="radio" name="disc3" value="C"><span class="option-text">Analisar se a crítica tem fundamento antes de reagir</span></label></div></div>
+      <div class="question"><label>4. Meu maior motivador no trabalho é...</label><div class="options"><label class="option"><input type="radio" name="disc4" value="D"><span class="option-text">Desafios, poder e autonomia</span></label><label class="option"><input type="radio" name="disc4" value="I"><span class="option-text">Reconhecimento, prestígio e interação social</span></label><label class="option"><input type="radio" name="disc4" value="S"><span class="option-text">Segurança, harmonia e colaboração</span></label><label class="option"><input type="radio" name="disc4" value="C"><span class="option-text">Precisão, qualidade e padrões elevados</span></label></div></div>
+      <div class="question"><label>5. Quando há um conflito na equipe, costumo...</label><div class="options"><label class="option"><input type="radio" name="disc5" value="D"><span class="option-text">Enfrentar diretamente e resolver de forma objetiva</span></label><label class="option"><input type="radio" name="disc5" value="I"><span class="option-text">Usar o humor e a conversa para aliviar a tensão</span></label><label class="option"><input type="radio" name="disc5" value="S"><span class="option-text">Tentar mediar e restaurar a harmonia</span></label><label class="option"><input type="radio" name="disc5" value="C"><span class="option-text">Analisar a situação com distância antes de agir</span></label></div></div>
+      <div class="question"><label>6. Quando preciso apresentar uma ideia, prefiro...</label><div class="options"><label class="option"><input type="radio" name="disc6" value="D"><span class="option-text">Ir direto ao ponto: resultados e impacto</span></label><label class="option"><input type="radio" name="disc6" value="I"><span class="option-text">Contar uma história envolvente que engaje as pessoas</span></label><label class="option"><input type="radio" name="disc6" value="S"><span class="option-text">Apresentar de forma estruturada, ouvindo as opiniões</span></label><label class="option"><input type="radio" name="disc6" value="C"><span class="option-text">Mostrar dados, evidências e detalhes que suportam a ideia</span></label></div></div>
+      <div class="question"><label>7. Em relação ao ritmo de trabalho, me identifico mais com...</label><div class="options"><label class="option"><input type="radio" name="disc7" value="D"><span class="option-text">Rápido, intenso e orientado a entregas</span></label><label class="option"><input type="radio" name="disc7" value="I"><span class="option-text">Dinâmico, variado e com muita interação</span></label><label class="option"><input type="radio" name="disc7" value="S"><span class="option-text">Constante, previsível e sem grandes sobressaltos</span></label><label class="option"><input type="radio" name="disc7" value="C"><span class="option-text">Metódico, organizado e com tempo para fazer bem feito</span></label></div></div>
+      <div class="question"><label>8. As pessoas costumam me descrever como...</label><div class="options"><label class="option"><input type="radio" name="disc8" value="D"><span class="option-text">Determinado(a), direto(a) e corajoso(a)</span></label><label class="option"><input type="radio" name="disc8" value="I"><span class="option-text">Animado(a), carismático(a) e comunicativo(a)</span></label><label class="option"><input type="radio" name="disc8" value="S"><span class="option-text">Calmo(a), confiável e bom(boa) ouvinte</span></label><label class="option"><input type="radio" name="disc8" value="C"><span class="option-text">Detalhista, criterioso(a) e preciso(a)</span></label></div></div>
+      <div class="question"><label>9. Quando tenho muitas tarefas ao mesmo tempo, costumo...</label><div class="options"><label class="option"><input type="radio" name="disc9" value="D"><span class="option-text">Priorizar o que gera mais resultado e delegar o resto</span></label><label class="option"><input type="radio" name="disc9" value="I"><span class="option-text">Pedir ajuda e engajar outras pessoas nas tarefas</span></label><label class="option"><input type="radio" name="disc9" value="S"><span class="option-text">Criar uma lista e seguir passo a passo sem pressa</span></label><label class="option"><input type="radio" name="disc9" value="C"><span class="option-text">Planejar com cuidado para não cometer erros</span></label></div></div>
+      <div class="question"><label>10. Em relação a regras e processos, minha postura é...</label><div class="options"><label class="option"><input type="radio" name="disc10" value="D"><span class="option-text">Questiono quando acho que atrapalham o resultado</span></label><label class="option"><input type="radio" name="disc10" value="I"><span class="option-text">Sigo, mas prefiro ambientes mais flexíveis e criativos</span></label><label class="option"><input type="radio" name="disc10" value="S"><span class="option-text">Valorizo regras claras, elas trazem segurança</span></label><label class="option"><input type="radio" name="disc10" value="C"><span class="option-text">Sigo rigorosamente e espero que todos façam o mesmo</span></label></div></div>
+      <div class="question"><label>11. Meu maior ponto de atenção no trabalho costuma ser...</label><div class="options"><label class="option"><input type="radio" name="disc11" value="D"><span class="option-text">Ser impaciente ou impulsivo(a) demais</span></label><label class="option"><input type="radio" name="disc11" value="I"><span class="option-text">Me dispersar ou ser desorganizado(a)</span></label><label class="option"><input type="radio" name="disc11" value="S"><span class="option-text">Ter dificuldade com mudanças ou confrontos</span></label><label class="option"><input type="radio" name="disc11" value="C"><span class="option-text">Ser perfeccionista ou crítico(a) demais</span></label></div></div>
+      <div class="question"><label>12. Quando começo um projeto novo, minha primeira reação é...</label><div class="options"><label class="option"><input type="radio" name="disc12" value="D"><span class="option-text">Definir o objetivo e começar logo</span></label><label class="option"><input type="radio" name="disc12" value="I"><span class="option-text">Compartilhar a ideia com outros para gerar entusiasmo</span></label><label class="option"><input type="radio" name="disc12" value="S"><span class="option-text">Entender bem o processo antes de começar</span></label><label class="option"><input type="radio" name="disc12" value="C"><span class="option-text">Pesquisar, planejar e estruturar cada etapa</span></label></div></div>
+      <div class="question"><label>13. Como prefiro receber orientações do meu líder?</label><div class="options"><label class="option"><input type="radio" name="disc13" value="D"><span class="option-text">Objetivo claro e autonomia para executar</span></label><label class="option"><input type="radio" name="disc13" value="I"><span class="option-text">Conversa aberta, com espaço para minhas ideias</span></label><label class="option"><input type="radio" name="disc13" value="S"><span class="option-text">Explicação clara do processo e suporte disponível</span></label><label class="option"><input type="radio" name="disc13" value="C"><span class="option-text">Instruções detalhadas, critérios e expectativas claras</span></label></div></div>
+      <div class="question"><label>14. Em reuniões, meu comportamento típico é...</label><div class="options"><label class="option"><input type="radio" name="disc14" value="D"><span class="option-text">Ir direto ao ponto e cobrar decisões concretas</span></label><label class="option"><input type="radio" name="disc14" value="I"><span class="option-text">Participar ativamente, contar casos e animar o grupo</span></label><label class="option"><input type="radio" name="disc14" value="S"><span class="option-text">Ouvir com atenção e falar quando tenho algo relevante</span></label><label class="option"><input type="radio" name="disc14" value="C"><span class="option-text">Fazer perguntas precisas e questionar detalhes</span></label></div></div>
+      <div class="question"><label>15. Quando algo dá errado no trabalho, minha tendência é...</label><div class="options"><label class="option"><input type="radio" name="disc15" value="D"><span class="option-text">Focar na solução imediatamente, sem perder tempo</span></label><label class="option"><input type="radio" name="disc15" value="I"><span class="option-text">Buscar apoio emocional e motivação para seguir</span></label><label class="option"><input type="radio" name="disc15" value="S"><span class="option-text">Manter a calma e trabalhar para estabilizar a situação</span></label><label class="option"><input type="radio" name="disc15" value="C"><span class="option-text">Analisar o que deu errado para evitar no futuro</span></label></div></div>
+      <div class="question"><label>16. O que mais me incomoda no ambiente de trabalho?</label><div class="options"><label class="option"><input type="radio" name="disc16" value="D"><span class="option-text">Lentidão, burocracia e falta de decisão</span></label><label class="option"><input type="radio" name="disc16" value="I"><span class="option-text">Ambiente frio, sem interação e sem criatividade</span></label><label class="option"><input type="radio" name="disc16" value="S"><span class="option-text">Conflitos, instabilidade e mudanças repentinas</span></label><label class="option"><input type="radio" name="disc16" value="C"><span class="option-text">Desorganização, falta de critério e trabalho mal feito</span></label></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="section-num">10</span> Como Você Se Conecta e Se Motiva</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:var(--texto);line-height:1.75;margin-bottom:20px;padding:12px 16px;background:var(--bg-soft);border-radius:8px;border-left:3px solid var(--roxo)">Esta seção complementa o DISC. Suas palavras são o que mais importa aqui. Escreva com liberdade e sem filtro.</p>
+      <p style="font-size:13px;color:var(--texto);margin-bottom:20px;line-height:1.7">Para cada situação abaixo, escolha a opção que <strong style="color:var(--texto)">mais representa</strong> como você se sente ou age naturalmente no trabalho.</p>
+      <div class="question"><label>1. Quando seu líder reconhece um bom trabalho seu, o que mais te impacta?</label><div class="options"><label class="option"><input type="radio" name="ling1" value="PA"><span class="option-text">Ouvir um elogio sincero ou receber um feedback positivo</span></label><label class="option"><input type="radio" name="ling1" value="TQ"><span class="option-text">Ter uma conversa individual genuína sobre meu crescimento</span></label><label class="option"><input type="radio" name="ling1" value="PR"><span class="option-text">Receber uma recompensa concreta, como bônus, brinde ou benefício</span></label><label class="option"><input type="radio" name="ling1" value="AS"><span class="option-text">Ver que alguém me ajudou a resolver um problema sem eu pedir</span></label><label class="option"><input type="radio" name="ling1" value="TF"><span class="option-text">Um aperto de mão, toque no ombro ou cumprimento físico caloroso</span></label></div></div>
+      <div class="question"><label>2. Quando estou sobrecarregado(a), o que mais me ajuda a recarregar?</label><div class="options"><label class="option"><input type="radio" name="ling2" value="PA"><span class="option-text">Alguém me dizer que está tudo bem e que estou indo bem</span></label><label class="option"><input type="radio" name="ling2" value="TQ"><span class="option-text">Ter um tempo de qualidade com alguém que me ouve de verdade</span></label><label class="option"><input type="radio" name="ling2" value="PR"><span class="option-text">Receber algo que mostre que meu esforço foi notado</span></label><label class="option"><input type="radio" name="ling2" value="AS"><span class="option-text">Alguém aparecer e ajudar a tirar tarefas do meu prato</span></label><label class="option"><input type="radio" name="ling2" value="TF"><span class="option-text">Um abraço ou gesto físico de acolhimento</span></label></div></div>
+      <div class="question"><label>3. Quando alguém da equipe faz um excelente trabalho, como você demonstra?</label><div class="options"><label class="option"><input type="radio" name="ling3" value="PA"><span class="option-text">Elogio verbalmente ou envio uma mensagem de reconhecimento</span></label><label class="option"><input type="radio" name="ling3" value="TQ"><span class="option-text">Separo um tempo para conversar e mostrar que me importo</span></label><label class="option"><input type="radio" name="ling3" value="PR"><span class="option-text">Dou algo concreto, como um presente, voucher ou gesto tangível</span></label><label class="option"><input type="radio" name="ling3" value="AS"><span class="option-text">Ofereço ajuda prática em algo que a pessoa precisa</span></label><label class="option"><input type="radio" name="ling3" value="TF"><span class="option-text">Cumprimento com aperto de mão ou toque no ombro</span></label></div></div>
+      <div class="question"><label>4. O que faz você se sentir mais valorizado(a) na equipe?</label><div class="options"><label class="option"><input type="radio" name="ling4" value="PA"><span class="option-text">Ser reconhecido(a) publicamente pelo que faço bem</span></label><label class="option"><input type="radio" name="ling4" value="TQ"><span class="option-text">Ser incluído(a) em conversas e ter atenção genuína do grupo</span></label><label class="option"><input type="radio" name="ling4" value="PR"><span class="option-text">Receber gestos concretos que mostrem que sou lembrado(a)</span></label><label class="option"><input type="radio" name="ling4" value="AS"><span class="option-text">Ver que as pessoas se ajudam de verdade no dia a dia</span></label><label class="option"><input type="radio" name="ling4" value="TF"><span class="option-text">Ter um ambiente de proximidade e contato humano genuíno</span></label></div></div>
+      <div class="question"><label>5. Numa reunião de feedback, o que você mais gosta de receber?</label><div class="options"><label class="option"><input type="radio" name="ling5" value="PA"><span class="option-text">Palavras claras de reconhecimento pelo que estou fazendo bem</span></label><label class="option"><input type="radio" name="ling5" value="TQ"><span class="option-text">Um papo longo, genuíno e sem pressa sobre minha trajetória</span></label><label class="option"><input type="radio" name="ling5" value="PR"><span class="option-text">Saber que meu desempenho vai se refletir em algo concreto</span></label><label class="option"><input type="radio" name="ling5" value="AS"><span class="option-text">Ouvir que posso contar com suporte para os próximos desafios</span></label><label class="option"><input type="radio" name="ling5" value="TF"><span class="option-text">Um encontro presencial com energia calorosa e próxima</span></label></div></div>
+      <div class="question"><label>6. Quando percebo que um colega está passando por um momento difícil, minha reação é...</label><div class="options"><label class="option"><input type="radio" name="ling6" value="PA"><span class="option-text">Dizer palavras de encorajamento e mostrar que acredito nele(a)</span></label><label class="option"><input type="radio" name="ling6" value="TQ"><span class="option-text">Parar tudo e dar atenção total a essa pessoa</span></label><label class="option"><input type="radio" name="ling6" value="PR"><span class="option-text">Surpreendê-la com algo que vai alegrar o dia</span></label><label class="option"><input type="radio" name="ling6" value="AS"><span class="option-text">Me oferecer para ajudar com algo concreto imediatamente</span></label><label class="option"><input type="radio" name="ling6" value="TF"><span class="option-text">Me aproximar fisicamente e mostrar presença com um gesto</span></label></div></div>
+      <div class="question"><label>7. O que tornaria seu ambiente de trabalho ideal do ponto de vista humano?</label><div class="options"><label class="option"><input type="radio" name="ling7" value="PA"><span class="option-text">Um lugar onde as pessoas se elogiam e reconhecem abertamente</span></label><label class="option"><input type="radio" name="ling7" value="TQ"><span class="option-text">Um lugar onde as pessoas realmente se ouvem e se dedicam umas às outras</span></label><label class="option"><input type="radio" name="ling7" value="PR"><span class="option-text">Um lugar que celebra conquistas com gestos e recompensas reais</span></label><label class="option"><input type="radio" name="ling7" value="AS"><span class="option-text">Um lugar onde as pessoas se ajudam sem precisar pedir</span></label><label class="option"><input type="radio" name="ling7" value="TF"><span class="option-text">Um lugar acolhedor, com proximidade e contato humano natural</span></label></div></div>
+      <div class="question"><label>8. Quando você comete um erro, o que mais te ajuda a seguir em frente?</label><div class="options"><label class="option"><input type="radio" name="ling8" value="PA"><span class="option-text">Ouvir que todos erram e que ainda acreditam em mim</span></label><label class="option"><input type="radio" name="ling8" value="TQ"><span class="option-text">Ter alguém presente que me dedique atenção genuína</span></label><label class="option"><input type="radio" name="ling8" value="PR"><span class="option-text">Receber algo que mostre que ainda sou valorizado(a)</span></label><label class="option"><input type="radio" name="ling8" value="AS"><span class="option-text">Ter ajuda concreta para resolver e seguir em frente</span></label><label class="option"><input type="radio" name="ling8" value="TF"><span class="option-text">Um gesto físico de apoio, como mão no ombro ou olhar acolhedor</span></label></div></div>
+      <div class="question"><label>9. Como você demonstra que se importa com o desenvolvimento de alguém da equipe?</label><div class="options"><label class="option"><input type="radio" name="ling9" value="PA"><span class="option-text">Dou feedbacks frequentes e elogios específicos sobre o progresso</span></label><label class="option"><input type="radio" name="ling9" value="TQ"><span class="option-text">Dedico tempo exclusivo para acompanhar e orientar essa pessoa</span></label><label class="option"><input type="radio" name="ling9" value="PR"><span class="option-text">Invisto em algo concreto, como um curso, ferramenta ou oportunidade</span></label><label class="option"><input type="radio" name="ling9" value="AS"><span class="option-text">Estou disponível para ajudar sempre que precisar</span></label><label class="option"><input type="radio" name="ling9" value="TF"><span class="option-text">Mantenho proximidade física e presença constante</span></label></div></div>
+      <div class="question"><label>10. Depois de uma semana muito intensa, o que mais te faria sentir bem?</label><div class="options"><label class="option"><input type="radio" name="ling10" value="PA"><span class="option-text">Receber uma mensagem reconhecendo minha dedicação</span></label><label class="option"><input type="radio" name="ling10" value="TQ"><span class="option-text">Ter um almoço ou café tranquilo com alguém que me entende</span></label><label class="option"><input type="radio" name="ling10" value="PR"><span class="option-text">Ser surpreendido(a) com algo especial como forma de agradecimento</span></label><label class="option"><input type="radio" name="ling10" value="AS"><span class="option-text">Alguém assumir parte das minhas tarefas para me ajudar</span></label><label class="option"><input type="radio" name="ling10" value="TF"><span class="option-text">Um encontro presencial caloroso com a equipe</span></label></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="section-num">11</span> Contexto Adicional</div>
+    <div class="section-body">
+      <div class="question"><label>Qual é seu maior ponto forte na carreira hoje?</label><textarea id="pontoForte" placeholder="Pense em algo que as pessoas costumam reconhecer em você..."></textarea></div>
+      <div class="question"><label>Qual é seu maior desafio ou ponto de melhoria?</label><textarea id="desafio" placeholder="Seja honesto(a). Este é um espaço seguro."></textarea></div>
+      <div class="question"><label>Tem algo mais que queira compartilhar?</label><textarea id="extra" placeholder="Contexto, situações específicas, expectativas..."></textarea></div>
+    </div>
+  </div>
+
+  <button type="button" class="submit-btn" onclick="enviarFormulario()">Enviar diagnóstico</button>
+</form>
+
+<div class="mentor-link">
+  <button onclick="document.getElementById('modalSenha').classList.add('open')">acesso restrito</button>
+</div>
+</div>
+</div>
+
+<!-- TELA OBRIGADO -->
+<div id="telaObrigado">
+  <div class="obrigado-wrap">
+    <div class="obrigado-card">
+      <div class="obrigado-top">
+        <div class="obrigado-icon">🗺️</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;background:linear-gradient(90deg,var(--verde),var(--azul));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px">MAPA© · CEP · CLAREZA</div>
+        <h2>Seu MAPA foi traçado, <span class="script" id="obgNome"></span>.</h2>
+        <p style="font-size:15px;color:var(--muted);font-weight:400;margin-top:8px;font-family:'Nunito',sans-serif;">O primeiro passo da sua jornada está completo.</p>
+      </div>
+      <div class="obrigado-msg" id="obgMsg"></div>
+      <div class="obrigado-footer">
+        <svg width="20" height="20" viewBox="0 0 798 269.55"><defs><linearGradient id="lgo" x1="36.9" y1="55.5" x2="256.5" y2="209.2" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 -1 0 290)"><stop offset="0" stop-color="#ABD905"/><stop offset="1" stop-color="#21C4F7"/></linearGradient></defs><path fill="url(#lgo)" d="M110.59,59.95H74.16v151.4c0,14.39,5.92,27.5,15.31,36.89c9.4,9.4,22.51,15.31,36.89,15.31l0,0c14.39,0,27.38-5.92,36.89-15.31c9.4-9.4,15.31-22.51,15.31-36.89v-1.74v-52.32v-25.99c0-9.63,3.94-18.33,10.21-24.59c6.38-6.38,15.08-10.21,24.59-10.21c9.63,0,18.33,3.94,24.59,10.21c6.38,6.38,10.21,15.08,10.21,24.59v25.99v52.32h36.43v-52.32v-25.99c0-19.61-8-37.47-21-50.47c-12.88-12.88-30.74-21-50.47-21c-19.61,0-37.47,8-50.47,21c-12.88,12.88-21,30.74-21,50.47v25.99v52.32v1.74c0,4.29-1.74,8.24-4.64,11.14s-6.84,4.64-11.14,4.64l0,0c-4.29,0-8.24-1.74-11.14-4.64c-2.9-2.9-4.64-6.84-4.64-11.14V59.95H110.59z"/></svg>
+        Em breve entro em contato para combinarmos o próximo passo.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL SENHA -->
+<div class="modal-overlay" id="modalSenha">
+  <div class="modal-box">
+    <span class="modal-icon">🔐</span>
+    <h3>Área do Mentor</h3>
+    <p>Insira a senha para acessar o painel com as respostas e ferramentas recomendadas.</p>
+    <input type="password" id="inputSenha" placeholder="Senha" onkeydown="if(event.key==='Enter')verificarSenha()">
+    <button class="modal-btn" onclick="verificarSenha()">Entrar</button>
+    <div class="modal-erro" id="erroSenha">Senha incorreta. Tente novamente.</div>
+  </div>
+
+
+<!-- SEPARADOR + PAINEL MENTOR -->
+<div class="separador-mentor" id="separadorMentor" style="display:none"><span>Painel do Mentor</span></div>
+<div id="telaMentor">
+  <div class="painel-wrap">
+    <div class="painel-header">
+      <svg class="logo-painel" viewBox="0 0 798 269.55" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="lg3" x1="36.9" y1="55.5" x2="256.5" y2="209.2" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 -1 0 290)"><stop offset="0" stop-color="#ABD905"/><stop offset="1" stop-color="#21C4F7"/></linearGradient></defs>
+        <rect x="6.06" y="6" fill="#540094" width="36.43" height="203.6"/>
+        <polygon fill="#540094" points="352.71,209.6 352.71,157.4 375.8,180.48 404.92,209.6 455.5,209.6 421.51,175.73 405.03,159.14 380.67,134.77 388.09,127.23 421.51,93.82 455.5,59.95 404.92,59.95 375.8,89.07 352.71,112.15 352.71,6 316.28,6 316.28,209.6"/>
+        <path fill="#540094" d="M539.61,180.02c-24.83,0-44.43-19.72-44.43-44.43c0-24.83,19.61-44.43,44.43-44.43c24.83,0,44.43,19.61,44.43,44.43C584.04,160.3,564.43,180.02,539.61,180.02 M539.14,56.12c-43.62,0-79.24,35.85-79.24,79.47s35.96,79.47,79.58,79.47c16.24,0,33.18-5.1,44.55-13.69v12.99h34.22v-76.22v-2.55C618.26,91.97,582.76,56.12,539.14,56.12"/>
+        <path fill="url(#lg3)" d="M110.59,59.95H74.16v151.4c0,14.39,5.92,27.5,15.31,36.89c9.4,9.4,22.51,15.31,36.89,15.31l0,0c14.39,0,27.38-5.92,36.89-15.31c9.4-9.4,15.31-22.51,15.31-36.89v-1.74v-52.32v-25.99c0-9.63,3.94-18.33,10.21-24.59c6.38-6.38,15.08-10.21,24.59-10.21c9.63,0,18.33,3.94,24.59,10.21c6.38,6.38,10.21,15.08,10.21,24.59v25.99v52.32h36.43v-52.32v-25.99c0-19.61-8-37.47-21-50.47c-12.88-12.88-30.74-21-50.47-21c-19.61,0-37.47,8-50.47,21c-12.88,12.88-21,30.74-21,50.47v25.99v52.32v1.74c0,4.29-1.74,8.24-4.64,11.14s-6.84,4.64-11.14,4.64l0,0c-4.29,0-8.24-1.74-11.14-4.64c-2.9-2.9-4.64-6.84-4.64-11.14V59.95H110.59z"/>
+      </svg>
+      <div class="painel-badge">🔐 Painel do Mentor</div>
+      <h2>Diagnóstico de <span id="painelNome" style="color:var(--roxo)"></span></h2>
+      <p>Respostas completas + ferramentas recomendadas para esta mentoria</p>
+    </div>
+    <div class="abas">
+      <div class="aba ativa" onclick="trocarAba('respostas',this)">Respostas</div>
+      <div class="aba" onclick="trocarAba('diagnostico',this)">Diagn&#243;stico</div>
+      <div class="aba" onclick="trocarAba('ferramentas',this)">Ferramentas</div>
+    </div>
+    <div id="tabRespostas" class="aba-content ativa"><div class="respostas-wrap" id="respostasWrap"></div></div>
+    <div id="tabDiagnostico" class="aba-content"><div class="ferramentas-wrap" id="diagnosticoWrap"></div></div>
+    <div id="tabFerramentas" class="aba-content"><div class="ferramentas-wrap" id="ferramentasWrap"></div></div>
+    <button class="print-btn" id="btnEnviarEmailMentor" onclick="enviarPainelPorEmail()" style="background:var(--roxo); color:white; border:none; margin-bottom:10px; box-shadow: 0 4px 12px rgba(84,0,148,0.2);">Enviar Relatório por E-mail (PDF)</button>
+    <button class="print-btn" onclick="imprimirPainelLimpo()">Imprimir / Salvar como PDF</button>
+  </div>
+</div>
+
+
+<!-- Scripts (ordem importa: assessments → form → painel → pdf → mentor) -->
+<script src="assets/js/assessments.js"></script>
+<script src="assets/js/form.js"></script>
+<script src="assets/js/painel.js"></script>
+<script src="assets/js/pdf.js"></script>
+<script src="assets/js/mentor.js"></script>
+
+</body>
+</html>

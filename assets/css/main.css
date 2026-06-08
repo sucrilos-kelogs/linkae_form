@@ -1,0 +1,209 @@
+/* ============================================================
+   Linkae — Diagnóstico de Mentoria · MAPA©
+   Folha de estilos principal
+   ============================================================ */
+
+/* ── Variáveis ── */
+:root {
+  --verde:  #ABD905;
+  --azul:   #21C4F7;
+  --roxo:   #540094;
+  --texto:  #1a1a2e;
+  --muted:  #7a7a8c;
+  --borda:  #e8e8f0;
+  --bg:     #fff;
+  --bg-soft:#f8f9fc;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--texto); font-family: 'Nunito', sans-serif; }
+
+/* ── Barra de progresso ── */
+.progress-bar  { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: var(--borda); z-index: 100; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--verde), var(--azul)); transition: width .4s; width: 0%; }
+
+/* ── Header do site ── */
+.site-header { padding: 48px 24px 52px; border-bottom: 1px solid var(--borda); position: relative; overflow: hidden; }
+.site-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--verde), var(--azul)); }
+.deco-u { position: absolute; right: -40px; top: -20px; opacity: .04; pointer-events: none; }
+.header-inner { max-width: 680px; margin: 0 auto; }
+.logo-header  { height: 40px; display: block; margin-bottom: 36px; }
+.header-tag   { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; display: block; }
+.header-title { font-family: 'Montserrat', sans-serif; font-size: clamp(28px,4vw,42px); font-weight: 700; color: var(--texto); line-height: 1.15; margin-bottom: 16px; }
+.header-title .script { font-family: 'Dancing Script', cursive; font-weight: 500; font-size: 1.05em; background: linear-gradient(90deg, var(--verde), var(--azul)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.header-sub   { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 520px; }
+
+/* ── Container ── */
+.container { max-width: 680px; margin: 0 auto; padding: 40px 24px 100px; }
+
+/* ── Seções do formulário ── */
+.section { margin-bottom: 16px; border: 1px solid var(--borda); border-radius: 12px; overflow: hidden; }
+.section-title { display: flex; align-items: center; gap: 12px; padding: 18px 24px; background: var(--bg-soft); border-bottom: 1px solid var(--borda); font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+.section-num   { width: 22px; height: 22px; background: linear-gradient(135deg, var(--verde), var(--azul)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: white; flex-shrink: 0; }
+.section-body  { padding: 24px; }
+
+/* ── Perguntas ── */
+.question { margin-bottom: 24px; }
+.question:last-child { margin-bottom: 0; }
+.question > label { display: block; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; color: var(--texto); margin-bottom: 10px; line-height: 1.5; }
+.hint { display: block; font-size: 12px; font-weight: 400; color: var(--muted); margin-top: 3px; font-family: 'Nunito', sans-serif; }
+
+/* ── Inputs ── */
+input[type="text"],
+input[type="date"],
+textarea {
+  width: 100%; background: var(--bg-soft); border: 1.5px solid var(--borda); border-radius: 8px;
+  padding: 12px 16px; font-family: 'Nunito', sans-serif; font-size: 14px; color: var(--texto);
+  outline: none; transition: border-color .2s;
+}
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+  border-color: var(--azul); box-shadow: 0 0 0 3px rgba(33,196,247,.1); background: white;
+}
+textarea { resize: vertical; min-height: 84px; line-height: 1.6; }
+
+/* ── Opções de múltipla escolha ── */
+.options { display: flex; flex-direction: column; gap: 8px; }
+.option  { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; background: var(--bg-soft); border: 1.5px solid var(--borda); border-radius: 8px; cursor: pointer; transition: all .18s; user-select: none; }
+.option:hover    { border-color: var(--azul); background: #f0fbff; }
+.option.selected { border-color: var(--verde); background: #f7fce8; }
+.option input    { margin-top: 2px; accent-color: var(--verde); flex-shrink: 0; }
+.option-text     { font-size: 14px; line-height: 1.5; color: var(--texto); }
+
+/* ── Escala ── */
+.scale-group  { display: grid; grid-template-columns: repeat(5,1fr); gap: 7px; }
+.scale-btn {
+  padding: 11px 6px; background: var(--bg-soft); border: 1.5px solid var(--borda); border-radius: 8px;
+  text-align: center; cursor: pointer; transition: all .18s;
+  font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; color: var(--muted);
+}
+.scale-btn:hover    { border-color: var(--azul); color: var(--texto); }
+.scale-btn.selected { background: linear-gradient(135deg, var(--verde), var(--azul)); color: white; border-color: transparent; }
+.scale-labels { display: flex; justify-content: space-between; margin-top: 6px; font-size: 11px; color: var(--muted); }
+
+/* ── Upload ── */
+.upload-zone  { border: 2px dashed var(--borda); border-radius: 8px; padding: 24px; text-align: center; cursor: pointer; background: var(--bg-soft); }
+.upload-zone input { display: none; }
+.upload-icon  { font-size: 24px; margin-bottom: 6px; }
+.upload-text  { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.upload-text strong { color: var(--azul); font-weight: 600; }
+.file-tag { display: inline-block; background: linear-gradient(90deg, var(--verde), var(--azul)); color: white; padding: 3px 12px; border-radius: 20px; font-size: 12px; margin-top: 8px; }
+
+/* ── Botão enviar ── */
+.submit-btn {
+  width: 100%; padding: 17px; background: var(--texto); color: white; border: none; border-radius: 10px;
+  font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .06em;
+  cursor: pointer; transition: all .25s; margin-top: 8px; position: relative;
+}
+.submit-btn::after { content: '→'; position: absolute; right: 22px; top: 50%; transform: translateY(-50%); font-size: 16px; background: linear-gradient(90deg, var(--verde), var(--azul)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.submit-btn:hover  { background: #2a2a3e; transform: translateY(-1px); }
+
+/* ── Tela Obrigado ── */
+#telaObrigado { display: none; animation: fadeUp .6s ease; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+.obrigado-wrap   { max-width: 680px; margin: 0 auto; padding: 60px 24px 100px; }
+.obrigado-card   { border: 1px solid var(--borda); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.06); }
+.obrigado-top    { padding: 48px 40px 40px; position: relative; background: white; text-align: center; }
+.obrigado-top::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--verde), var(--azul)); }
+.obrigado-icon   { width: 72px; height: 72px; background: linear-gradient(135deg, var(--verde), var(--azul)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 32px; box-shadow: 0 8px 28px rgba(33,196,247,.2); }
+.obrigado-top h2 { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 700; color: var(--texto); margin-bottom: 6px; }
+.obrigado-top h2 .script { font-family: 'Dancing Script', cursive; font-size: 1.1em; background: linear-gradient(90deg, var(--verde), var(--azul)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.obrigado-msg    { background: var(--bg-soft); padding: 32px 40px; font-size: 15px; line-height: 1.9; color: var(--texto); }
+.obrigado-msg p  { margin-bottom: 16px; }
+.obrigado-msg p:last-child { margin-bottom: 0; }
+.obrigado-msg strong  { color: var(--roxo); }
+.obrigado-msg .destaque { background: linear-gradient(90deg, var(--verde), var(--azul)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; }
+.obrigado-footer { padding: 24px 40px; border-top: 1px solid var(--borda); background: white; font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+
+/* ── Painel do mentor ── */
+#telaMentor { display: none; }
+
+.separador-mentor { max-width: 760px; margin: 0 auto; padding: 32px 24px 0; display: flex; align-items: center; gap: 16px; }
+.separador-mentor::before, .separador-mentor::after { content: ''; flex: 1; height: 1px; background: var(--borda); }
+.separador-mentor span { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+
+.painel-wrap    { max-width: 760px; margin: 0 auto; padding: 40px 24px 120px; }
+.painel-header  { padding: 36px; background: white; border: 1px solid var(--borda); border-radius: 12px 12px 0 0; position: relative; }
+.painel-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--verde), var(--azul)); }
+.painel-header .logo-painel { height: 32px; display: block; margin-bottom: 20px; }
+.painel-header h2  { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; }
+.painel-header p   { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.painel-badge { display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(90deg,rgba(171,217,5,.15),rgba(33,196,247,.15)); border: 1px solid rgba(33,196,247,.3); border-radius: 20px; padding: 4px 14px; font-size: 11px; font-weight: 700; font-family: 'Montserrat', sans-serif; color: #0a9bc4; margin-bottom: 16px; }
+
+/* ── Abas ── */
+.abas { display: flex; border-bottom: 1px solid var(--borda); background: white; border-left: 1px solid var(--borda); border-right: 1px solid var(--borda); }
+.aba  { flex: 1; padding: 14px; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: all .2s; }
+.aba.ativa { color: var(--roxo); border-bottom-color: var(--roxo); }
+.aba-content      { display: none; }
+.aba-content.ativa { display: block; }
+
+/* ── Conteúdo das abas ── */
+.respostas-wrap,
+.ferramentas-wrap { background: var(--bg-soft); border: 1px solid var(--borda); border-top: none; border-radius: 0 0 12px 12px; padding: 28px 28px 36px; }
+
+.resp-bloco { background: white; border: 1px solid var(--borda); border-radius: 10px; padding: 26px 24px; margin-bottom: 20px; break-inside: avoid; page-break-inside: avoid; }
+.resp-bloco h4 { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--borda); }
+.resp-item  { display: flex; gap: 12px; margin-bottom: 12px; font-size: 13px; line-height: 1.6; }
+.resp-label { font-family: 'Montserrat', sans-serif; font-weight: 600; color: var(--muted); min-width: 160px; flex-shrink: 0; font-size: 12px; }
+
+/* ── Cards de meses ── */
+.mes-card   { background: white; border: 1px solid var(--borda); border-radius: 10px; padding: 26px 24px; margin-bottom: 20px; break-inside: avoid; page-break-inside: avoid; }
+.mes-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.mes-badge  { width: 38px; height: 38px; background: linear-gradient(135deg, var(--verde), var(--azul)); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+.mes-info h3 { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; }
+.mes-info p  { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ── Lista de ferramentas ── */
+.ferramenta-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.ferramenta-item { display: flex; align-items: flex-start; gap: 10px; padding: 13px 14px; background: var(--bg-soft); border-left: 3px solid var(--borda); border-radius: 0 8px 8px 0; break-inside: avoid; page-break-inside: avoid; }
+.ferramenta-item.base  { border-left-color: var(--azul); }
+.ferramenta-item.extra { border-left-color: var(--verde); }
+
+.tag       { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 9px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+.tag.base  { background: rgba(33,196,247,.12); color: #0a9bc4; }
+.tag.extra { background: rgba(171,217,5,.15); color: #6a8a00; }
+
+.ferramenta-nome   { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; display: block; margin-bottom: 2px; }
+.ferramenta-motivo { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+.obs-box    { margin-top: 12px; padding: 16px 18px; background: white; border: 1px solid var(--borda); border-left: 3px solid var(--azul); border-radius: 0 8px 8px 0; }
+.obs-box h4 { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; color: var(--azul); margin-bottom: 6px; text-transform: uppercase; }
+.obs-box p  { font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+/* ── Botões do painel ── */
+.print-btn {
+  width: 100%; padding: 13px; margin-top: 18px; background: transparent; border: 1.5px solid var(--borda);
+  color: var(--muted); border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 11px;
+  font-weight: 700; letter-spacing: .15em; text-transform: uppercase; cursor: pointer; transition: all .2s;
+}
+.print-btn:hover { border-color: var(--azul); color: var(--azul); }
+
+.mentor-link { text-align: center; margin-top: 32px; }
+.mentor-link button { background: none; border: none; font-size: 11px; color: var(--borda); cursor: pointer; font-family: 'Nunito', sans-serif; transition: color .2s; }
+.mentor-link button:hover { color: var(--muted); }
+
+/* ── Modal senha ── */
+.modal-overlay { position: fixed; inset: 0; background: rgba(26,26,46,.7); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 500; }
+.modal-overlay.open { display: flex; }
+.modal-box { background: white; border-radius: 16px; padding: 40px 36px; max-width: 400px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,.2); position: relative; animation: fadeUp .3s ease; }
+.modal-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--verde), var(--azul)); border-radius: 16px 16px 0 0; }
+.modal-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+.modal-box h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+.modal-box p  { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
+.modal-box input[type="password"] { width: 100%; background: var(--bg-soft); border: 1.5px solid var(--borda); border-radius: 8px; padding: 12px 16px; font-family: 'Nunito', sans-serif; font-size: 14px; outline: none; margin-bottom: 12px; }
+.modal-btn  { width: 100%; padding: 14px; background: var(--texto); color: white; border: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; }
+.modal-erro { font-size: 12px; color: #e74c3c; margin-top: 8px; display: none; }
+
+/* ── Responsivo ── */
+@media (max-width: 560px) {
+  .section-body, .painel-wrap, .obrigado-wrap { padding-left: 16px; padding-right: 16px; }
+  .obrigado-top, .obrigado-msg, .obrigado-footer { padding-left: 20px; padding-right: 20px; }
+}
+
+/* ── Print ── */
+@media print {
+  .progress-bar, .submit-btn, .print-btn, .mentor-link, .abas, .modal-overlay { display: none !important; }
+}
