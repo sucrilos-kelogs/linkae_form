@@ -1,9 +1,9 @@
 // ============================================================
 //  painel.js — Renderização do Painel do Mentor
-//  renderDiscPainel, renderLingPainel, renderRespostas,
-//  renderDiagnostico, renderFerramentas
+//  renderDiscPainel · renderLingPainel · renderRespostas
+//  renderDiagnostico · renderFerramentas
 // ============================================================
-// ===== RENDER DISC NO PAINEL =====
+
 function renderDiscPainel(disc){
   if(!disc)return'<div class="resp-item"><span class="resp-label">DISC</span><span class="resp-valor">Não preenchido</span></div>';
   const desc=descDisc(disc.principal),desc2=descDisc(disc.segundo);
@@ -157,7 +157,6 @@ function renderRespostas(d){
       ${d.linkedinUrl?`<div class="resp-item"><span class="resp-label">URL</span><span class="resp-valor"><a href="${d.linkedinUrl}" target="_blank" style="color:var(--azul)">${d.linkedinUrl}</a></span></div>`:''}
       <div class="resp-item"><span class="resp-label">Currículo</span><span class="resp-valor">${{nao:'Desatualizado',parcial:'Parcialmente atualizado',sim:'Atualizado'}[d.cv]||'—'}</span></div>
     </div>`;
-}
 }
 
 // ===== RENDER DIAGNÓSTICO INTEGRADO =====
@@ -833,50 +832,3 @@ function renderFerramentas(d){
       </ul>
     </div>`).join('')+obs;
 }
-
-// ===== IMPRIMIR / SALVAR COMO PDF =====
-// O window.print() nativo desconfigurava o layout porque imprimia a página inteira,
-// incluindo elementos fora do painel. Esta função isola apenas o #telaMentor:
-// abre uma nova janela com o conteúdo e os estilos do painel, e dispara o print nela.
-// O resultado no "Salvar como PDF" do browser fica limpo e fiel ao painel.
-function imprimirPainelLimpo(){
-  const painel = document.getElementById('telaMentor');
-  if(!painel){ alert('Painel não disponível.'); return; }
-
-  // Copia todos os <style> e <link rel=stylesheet> da página original
-  const estilos = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
-    .map(el => el.outerHTML)
-    .join('
-');
-
-  // Abre nova janela apenas com o conteúdo do painel
-  const janela = window.open('', '_blank', 'width=900,height=700');
-  janela.document.write(`<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Painel do Mentor — Linkae</title>
-  ${estilos}
-  <style>
-    body { margin: 0; padding: 20px; background: #fff; }
-    #telaMentor { display: block !important; }
-    .print-btn, #btnEnviarEmailMentor, .mentor-link { display: none !important; }
-    @media print {
-      body { padding: 0; }
-      @page { margin: 15mm; }
-    }
-  </style>
-</head>
-<body>
-  <div id="telaMentor">
-    ${painel.innerHTML}
-  </div>
-  <script>
-    window.onload = function(){ window.print(); }
-  <\/script>
-</body>
-</html>`);
-  janela.document.close();
-}
-
-</script>
